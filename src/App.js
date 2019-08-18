@@ -26,10 +26,10 @@ const App = () => {
   const themeState = useTheme();
   return (
     <Wrapper>
-      <h1>Dark Mode React</h1>
+      <h1>Dark Night Rises</h1>
       <div>
         <button onClick={() => themeState.toggle()}>
-          {themeState.dark ? "Light Mode" : "Dark Mode"}
+          {themeState.dark ? "Light Mode for Wayne" : "Dark Mode for Batman"}
         </button>
       </div>
     </Wrapper>

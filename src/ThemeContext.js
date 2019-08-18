@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider as EmotionThemeProvider } from "emotion-theming";
-import theme from "./theme";
+import theme from "./theme.js";
 
 const defaultContextData = {
   dark: false,
@@ -19,6 +19,7 @@ const useEffectDarkMode = () => {
   React.useEffect(() => {
     const isDark = localStorage.getItem("dark") === "true";
     setThemeState({ ...themeState, dark: isDark, themeMounted: true });
+    // eslint-disable-next-line
   }, []);
 
   return [themeState, setThemeState];
@@ -27,14 +28,14 @@ const useEffectDarkMode = () => {
 const ThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useEffectDarkMode();
 
-  if (!themeState.dark) {
+  if (!themeState.themeMounted) {
     return <div />;
   }
 
   const toggle = () => {
     const dark = !themeState.dark;
     localStorage.setItem("dark", JSON.stringify(dark));
-    setThemeState(...themeState, dark);
+    setThemeState({ ...themeState, dark });
   };
 
   const renderedTheme = themeState.dark ? theme("dark") : theme("light");
