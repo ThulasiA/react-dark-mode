@@ -19,6 +19,7 @@ const Wrapper = styled("div")`
     border: none;
     font-size: 16px;
     outline: none;
+    padding: 1em;
   }
 `;
 
